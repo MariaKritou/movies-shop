@@ -1,6 +1,8 @@
 import react from "react";
 import './movie.styles.css';
 
+// you can destructure the props object
+// button should have an action event
 export const Movie = (props) => (
 
     <div className='card-container'>

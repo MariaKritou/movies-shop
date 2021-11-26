@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import './header.styles.css';
 
+// you can create a prop with number of ordered movies 
 const Header = () => (
     <div className='header row'>
         <div className='col-2 mt-4'>  
