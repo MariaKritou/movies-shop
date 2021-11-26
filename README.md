@@ -5,5 +5,5 @@ BOOTSTRAP:
 I used the vanilla bootstrap library V.5
 
 RUNNING PROJECT:
-To run the rpoject you just use "yarn start"
+To run the rpoject you just use "yarn start" <br>
 My api key is allready in the env file so no configuration is needed.
