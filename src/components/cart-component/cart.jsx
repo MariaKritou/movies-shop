@@ -2,7 +2,7 @@ import React from "react";
 import './cart.styles.css';
 
 // movies should pass as a prop
-// movies in card maybe should be a component
+// movies in cart maybe should be a component
 // class -> className
 // total price should be a state in component
 export const Cart = () =>(

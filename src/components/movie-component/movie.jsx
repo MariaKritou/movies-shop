@@ -3,6 +3,13 @@ import './movie.styles.css';
 
 // you can destructure the props object
 // button should have an action event
+
+/*
+ we do not have functionallity yet,
+ but a button handler with console.log would be helpful 
+ for checking button's events
+*/
+
 export const Movie = (props) => (
 
     <div className='card-container'>
