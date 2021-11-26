@@ -3,7 +3,8 @@ You should run it on **Mozilla** or **Chrome**  (on microsoft edge UI has a few 
 To run the rpoject you just use: <br>
 yarn install <br>
 yarn start <br>
-My api key is allready in the env file so no configuration is needed, if you want to use yuors you can changge it in the env file (REACT_APP_API).
+My api key is allready in the env file so no configuration is needed,<br>
+if you want to use yours you can change it in the env file (REACT_APP_API).
 
 
 **API CALL:**
