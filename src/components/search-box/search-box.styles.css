@@ -1,0 +1,21 @@
+
+.search {
+    -webkit-appearance: none;
+    border: none;
+    outline: none;
+    float:left;
+    width: 80% !important;
+  }
+  
+.search-row {
+      background-color: rgba(163, 163, 163, 0.452);
+      margin-bottom: 20px;
+      padding: 0.8rem;
+      max-width: 35% !important;
+      margin-left: 0.8% !important;
+      border-radius: 3px;
+  }
+
+.select-box{
+      float:right;
+  }

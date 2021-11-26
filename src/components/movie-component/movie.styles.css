@@ -1,0 +1,47 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #1b1b1b;
+    border: 1px solid rgba(128, 128, 128, 0.767);
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    width: 11rem;
+    height: 100%;
+    border-radius: 5px;
+  }
+  
+.card-container:hover {
+    transform: scale(1.05);
+  }
+  
+.card-title {
+  margin-top: 2px;;
+  font-size: small;
+  font-family: 'Lucida Sans';
+  font-weight: 200;
+  color: rgb(184, 183, 182);
+  text-align: left;
+  height: 100%;
+}
+
+.card-rate {
+  margin-top: 1px;;
+  font-size: small;
+  font-family: 'Lucida Sans';
+  font-weight: 200;
+  color: rgb(255, 229, 115);
+  width: 50%;
+}
+
+button {
+  width: 2rem;
+  padding:0 !important;
+  height: 2rem;
+  float: right;
+}
+

@@ -1,0 +1,20 @@
+li{
+    align-content: left;
+    color: whitesmoke !important;
+    background-color: rgba(129, 129, 129, 0) !important;
+    border: solid 1px rgb(99, 99, 99) !important;
+}
+
+btn{
+    width: 20% !important;
+}
+
+.btn-cart{
+    width: 100% !important;
+}
+
+.cart-title{
+    font-family: 'Kaushan Script', cursive;
+    font-size: xx-large;
+    text-align: center;
+}
