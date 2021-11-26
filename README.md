@@ -1,5 +1,5 @@
 **RUNNING PROJECT:**
-You should run it on **Mozilla** or **Chrome**  (on microsoft edge UI has a few issues for now)
+You should run it on **Mozilla** or **Chrome**  (on microsoft edge UI has a few issues for now)<br>
 To run the rpoject you just use: <br>
 yarn install <br>
 yarn start <br>
