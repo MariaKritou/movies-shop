@@ -1,7 +1,7 @@
 import react from "react";
 import './search-box.styles.css';
 
-export const Search = () => (
+export const Search = ({placeholder, handleChange}) => (
 
     <div className="row search-row">
         <div className="col-sm-8">
@@ -9,7 +9,9 @@ export const Search = () => (
             <input 
                 className='search form-control input-group'
                 type='search' 
-                placeholder="Search Movie by Title..."/>
+                placeholder={placeholder} 
+                onChange={handleChange}
+                />
 
             </div>
         </div>
