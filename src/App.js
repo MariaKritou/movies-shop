@@ -1,43 +1,32 @@
-import Header from './components/header-component/header';
 import {MoviesList} from './components/movie-list/movie-list';
 import {Cart} from './components/cart-component/cart';
 import {Search} from './components/search-box/search-box';
-import React, { Component } from 'react';
-// Axios is not used 
-import Axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Layout from './components/layout-component/layout';
 import './App.css'
 
-// write component with React hook approach 
-class App extends Component {
-  constructor(){
-    super();
+function App() {
+    const [movies, setMovies] = useState([]);
+    const apiKey = process.env.REACT_APP_API;
 
-    this.state = {
-      movies: [],
+    useEffect(() => {
+      fetchData();
+    }, []);
+
+    function fetchData() {
+
+      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
+      .then(res => res.json())
+      .then(moviesFetched => {
+        setMovies([...moviesFetched.results]); 
+    });
+
     }
 
-    this.apiKey = process.env.REACT_APP_API
-  }
-
-  componentDidMount(){
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${this.apiKey}&language=en-US&page=1`)
-    .then(res => res.json())
-    .then(moviesFetched => {
-      console.log(moviesFetched.results);
-        this.setState({ movies: [...moviesFetched.results]}) // why use spread operator 
-    });
-     
-  }
-
- render() {
-
-    const { movies } = this.state;
-    // you can create a Layout component 
-    // and pass as children the dynamic content
     return (
+    <Layout>
       <div className="App">
-        <Header/>
-        <div className="m-5">
+       
           <div className="row">
             <Search/>
           </div>
@@ -50,9 +39,9 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+    
+      </Layout>
     );
   }
-}
 
 export default App;

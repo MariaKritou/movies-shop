@@ -3,15 +3,14 @@ import './cart.styles.css';
 
 // movies should pass as a prop
 // movies in cart maybe should be a component
-// class -> className
 // total price should be a state in component
 export const Cart = () =>(
   
-<div class="card text-white bg-dark" >
-  <div class="card-header cart-title">Cart</div>
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item ">
+<div className="card text-white bg-dark" >
+  <div className="card-header cart-title">Cart</div>
+    <div className="card-body">
+      <ul className="list-group list-group-flush">
+        <li className="list-group-item ">
             <div className="row">
                 <div className="col-5">Venom</div>
                 <div className="col-4">1 x 15$</div>
@@ -21,7 +20,7 @@ export const Cart = () =>(
                 </div>
             </div>   
         </li>
-        <li class="list-group-item ">
+        <li className="list-group-item ">
             <div className="row">
                 <div className="col-5">Shrek</div>
                 <div className="col-4">1 x 10$</div>
@@ -37,10 +36,11 @@ export const Cart = () =>(
                 <div className="col-3"><strong>25</strong>$</div>
             </div>   
       <div className="row justify-content-md-center mt-3">
-      <div class="col-md-5">
+      <div className="col-md-5">
           <button type='button' className='btn btn-warning btn-cart'>Checkout</button>
       </div>
     </div>
   </div>
 </div>
+
 );
