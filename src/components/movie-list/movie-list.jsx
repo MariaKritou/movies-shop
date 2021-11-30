@@ -13,8 +13,8 @@ export const MoviesList = (props) => (
     
     <div className="movie-list">
         {
-            props.movies.map(({ id, ...otherItemProps }) => (              
-                 <Movie key={id} {...otherItemProps} />                
+            props.movies.map((movie) => (              
+                 <Movie movie={movie} onAdd={props.onAdd} />                
             ))
         }
     </div>       

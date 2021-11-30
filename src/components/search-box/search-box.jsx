@@ -1,7 +1,7 @@
 import react from "react";
 import './search-box.styles.css';
 
-export const Search = ({placeholder, handleChange}) => (
+export const Search = ({placeholder, handleSearchChange, handleSortingChange, sortValue}) => (
 
     <div className="row search-row">
         <div className="col-sm-8">
@@ -10,16 +10,21 @@ export const Search = ({placeholder, handleChange}) => (
                 className='search form-control input-group'
                 type='search' 
                 placeholder={placeholder} 
-                onChange={handleChange}
+                onChange={handleSearchChange}
                 />
 
             </div>
         </div>
         <div className="col-sm-4">
             <div className="form-group">
-                <select className="form-select select-box">
-                <option className="rating">Rating</option>
-                <option className="popularity">Popularity</option>
+                <select 
+                    className="form-select select-box"
+                    type='select'
+                    onChange={handleSortingChange}
+                    value={sortValue}
+                    >
+                <option value='vote_average'>Rating</option>
+                <option value='popularity'>Popularity</option>
                 </select>
             </div>
         </div>

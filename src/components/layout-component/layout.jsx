@@ -4,7 +4,7 @@ import Header from "../header-component/header";
 export default function Layout(props) {
     return (
         <div>
-            <Header />
+            <Header countCartItems={props.countCartItems} />
             <div className="m-5">
                {props.children}
             </div>
