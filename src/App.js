@@ -1,7 +1,7 @@
 import { MoviesList } from './components/movie-list/movie-list';
 import { Cart } from './components/cart-component/cart';
 import { Search } from './components/search-box/search-box';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children } from 'react';
 import Layout from './components/layout-component/layout';
 import Pagination from './components/pagination-component/pagination';
 import './App.css'
@@ -64,13 +64,13 @@ function App() {
     //If a movie is already in the cart then just increase its quantity 
     if (exists) {
       setCartItems(cartItems.map((x) =>
-                   x.id === movie.id ? {...exists, quantity:exists.quantity + 1} : x));
-    } 
+        x.id === movie.id ? { ...exists, quantity: exists.quantity + 1 } : x));
+    }
     //Otherwise put the movie in the cart and its quantity will be 1 
     else {
-      setCartItems([...cartItems, {...movie, quantity: 1}])
+      setCartItems([...cartItems, { ...movie, quantity: 1 }])
     }
-
+    //Increase the total price when adding a movie in cart
     setTotalPrice(totalPrice + 10);
   }
 
@@ -78,13 +78,13 @@ function App() {
     const exists = cartItems.find(x => x.id === movie.id);
 
     //If the movie is in the cart and its only one then filter it out
-    if (exists.quantity === 1 ) {
+    if (exists.quantity === 1) {
       setCartItems(cartItems.filter((x) => x.id !== movie.id));
-    } 
+    }
     //Otherwise decrease the movie's quantity by one
     else {
       setCartItems(cartItems.map((x) =>
-                   x.id === movie.id ? {...exists, quantity:exists.quantity - 1} : x));      
+        x.id === movie.id ? { ...exists, quantity: exists.quantity - 1 } : x));
     }
     //Also remove the price from total
     setTotalPrice(totalPrice - 10);
@@ -125,22 +125,21 @@ function App() {
   //Handle the onChange event for the select option
   const handleSortingChange = e => {
     e.preventDefault();
+    //get the selected option - sort the movies in a copy and then set it
+    const sortingOption = e.target.value;
+    const sortedMovies = [...movies].sort((a, b) => b[sortingOption] - a[sortingOption]);
 
-    //get the selected option
-    const sortval = e.target.value;
+    //update the values
     setSortType(e.target.value);
-
-    //sort the movies in a copy and then set it
-    const sorted = [...movies].sort((a, b) => b[sortval] - a[sortval]);
-    setMovies(sorted);
+    setMovies(sortedMovies);
   }
   //---------------EVENT HANDLERS END-----------------
 
 
   return (
-    <Layout countCartItems={cartItems.length}>
-      <div className="App">
+    <Layout countCartItems={cartItems.length} children={Children}>
 
+      <div className="App">
         <div className="row">
           <Search
             placeholder='Search movies'
@@ -151,15 +150,15 @@ function App() {
         </div>
         <div className="row">
           <div className="col-9">
-            {movies.length === 0 ? <p className='text-white'>No movies found!</p> : <MoviesList movies={movies} onAdd={onAdd} />}
+            {movies.length === 0 ? <p className='text-white'>No movies found!</p> : <MoviesList movies={movies} onAdd={onAdd} onRemove={onRemove} cartItems={cartItems} />}
             {totalResults > 20 ? <Pagination pages={totalPages} nextPage={nextPage} currentPage={currentPage} /> : ''}
           </div>
           <div className="col-3">
-            <Cart 
+            <Cart
               cartItems={cartItems}
               totalPrice={totalPrice}
-              onAdd={onAdd} 
-              onRemove={onRemove} 
+              onAdd={onAdd}
+              onRemove={onRemove}
             />
           </div>
         </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.styles.css';
 
-const Header = (props) => (
+const Header = ({countCartItems}) => (
     <div className='header row'>
         <div className='col-2 mt-4'>
             <a className='logo-container' to="/">
@@ -19,7 +19,7 @@ const Header = (props) => (
                 <Link className='option' to='/shop'> CONTACT </Link>
             </div>
         </div>
-        <div className='col-1 mt-4'><span className='btn oi oi-cart btn-danger'><strong> {props.countCartItems}</strong></span></div>
+        <div className='col-1 mt-4'><span className='btn oi oi-cart btn-danger'><strong> {countCartItems}</strong></span></div>
     </div>
 );
 
