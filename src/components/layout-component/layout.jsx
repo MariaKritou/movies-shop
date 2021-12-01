@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../header-component/header";
+import Footer from "../footer-component/footer";
 
 export default function Layout({countCartItems, children}) {
     return (
@@ -8,7 +9,7 @@ export default function Layout({countCartItems, children}) {
             <div className="m-5">
                {children}
             </div>
-            {/* add also a footer component here */}
+            <Footer />
         </div>
     )
 }

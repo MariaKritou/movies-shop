@@ -19,7 +19,7 @@ const Header = ({countCartItems}) => (
                 <Link className='option' to='/'> CONTACT </Link>
             </div>
         </div>
-        <div className='col-1 mt-4'><span className='btn oi oi-cart btn-danger'><strong> {countCartItems}</strong></span></div>
+        <div className='col-1 mt-4'><span className='btn oi oi-cart btn-warning'><strong> {countCartItems}</strong></span></div>
     </div>
 );
 

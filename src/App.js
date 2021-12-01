@@ -4,6 +4,8 @@ import { Search } from './components/search-box/search-box';
 import React, { useState, useEffect, Children } from 'react';
 import Layout from './components/layout-component/layout';
 import Pagination from './components/pagination-component/pagination';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
 
   const apiKey = process.env.REACT_APP_API;
 
+  //Due to a console warning for empty dependency we have to add the eslint-disable line as a comment
   useEffect(() => {
     fetchData();
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,6 +60,39 @@ function App() {
     }
   }
 
+  //Checkout button functionality
+  async function purchaseMovies() {
+
+    const idList = []
+    cartItems.forEach(movie => {
+      idList.push(movie.id);
+    });
+    const postData = { 'data': idList}
+
+    console.log(idList);
+    try {
+      const res = await fetch('https://api.mocklets.com/mock68075/', {
+        method: 'post',
+        headers: {
+          'X-Mocklets-PublicKey': 'txmovies',
+          'X-Mocklets-Checksum': '830c7cd4a70be6540a4898441ca02951'
+        },
+        body: JSON.stringify(postData)
+      })
+
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Purchare successful");
+        setCartItems([]);
+        setTotalPrice(0);
+      } else {
+        toast.error("Purchase was not successful, try again");
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
   //---------------FETCH MOVIES END---------------------------
 
   //---------------CART FUNCTIONALITY START-------------------
@@ -141,7 +177,7 @@ function App() {
 
   return (
     <Layout countCartItems={cartItems.length} children={Children}>
-
+     <ToastContainer />
       <div className="App">
         <div className="row">
           <Search
@@ -162,6 +198,7 @@ function App() {
               totalPrice={totalPrice}
               onAdd={onAdd}
               onRemove={onRemove}
+              purchaseMovies={purchaseMovies}
             />
           </div>
         </div>
