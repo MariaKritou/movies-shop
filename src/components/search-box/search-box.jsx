@@ -1,4 +1,3 @@
-import react from "react";
 import './search-box.styles.css';
 
 export const Search = ({placeholder, handleSearchChange, handleSortingChange, sortValue}) => (

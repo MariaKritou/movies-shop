@@ -22,9 +22,10 @@ function App() {
 
   useEffect(() => {
     fetchData();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  //---------------FETCH MOVIES START-----------------
+  //---------------FETCH MOVIES START--------------------------
 
   //Get popular movies and sort them with vote_average
   function fetchData() {
@@ -41,22 +42,24 @@ function App() {
 
   //Get movies from search result 
   async function fetchSearchedMovies() {
-    try {
-      const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchField}`);
-      const data = await res.json();
-      setMovies([...data.results]);
+    if (searchField.length >= 2) {
+      try {
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchField}`);
+        const data = await res.json();
+        setMovies([...data.results]);
 
-      //set parameters for pagination
-      setTotalResults(data.total_results);
-      setTotalPages(data.total_pages);
-    } catch (error) {
-      console.error(error);
+        //set parameters for pagination
+        setTotalResults(data.total_results);
+        setTotalPages(data.total_pages);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
-  //---------------FETCH MOVIES END-----------------
+  //---------------FETCH MOVIES END---------------------------
 
-  //---------------CART FUNCTIONALITY START-----------------
+  //---------------CART FUNCTIONALITY START-------------------
 
   const onAdd = (movie) => {
     const exists = cartItems.find(x => x.id === movie.id);
@@ -90,10 +93,10 @@ function App() {
     setTotalPrice(totalPrice - 10);
   }
 
-  //---------------CART FUNCTIONALITY END--------------------
+  //---------------CART FUNCTIONALITY END-----------------------
 
 
-  //---------------PAGINATION FUNCTIONALITY START----------------
+  //---------------PAGINATION FUNCTIONALITY START---------------
 
   //Get the movies from a specific page of the API
   async function paginationMovies(pageNumber) {
@@ -113,7 +116,7 @@ function App() {
   }
   //---------------PAGINATION FUNCTIONALITY END-----------------
 
-  //---------------EVENT HANDLERS START-----------------
+  //---------------EVENT HANDLERS START-------------------------
 
   //Handle the onChange event for the search input
   const handleSearchChange = e => {
@@ -133,7 +136,7 @@ function App() {
     setSortType(e.target.value);
     setMovies(sortedMovies);
   }
-  //---------------EVENT HANDLERS END-----------------
+  //---------------EVENT HANDLERS END---------------------------
 
 
   return (

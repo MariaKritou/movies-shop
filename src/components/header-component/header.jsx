@@ -6,7 +6,7 @@ import './header.styles.css';
 const Header = ({countCartItems}) => (
     <div className='header row'>
         <div className='col-2 mt-4'>
-            <a className='logo-container' to="/">
+            <a href='/#' className='logo-container' to="/">
                 <Logo className='logo' />
             </a>
         </div>
@@ -15,8 +15,8 @@ const Header = ({countCartItems}) => (
         </div>
         <div className='col-7'>
             <div className='options'>
-                <Link className='option' to='/shop'> HOME </Link>
-                <Link className='option' to='/shop'> CONTACT </Link>
+                <Link className='option' to='/'> HOME </Link>
+                <Link className='option' to='/'> CONTACT </Link>
             </div>
         </div>
         <div className='col-1 mt-4'><span className='btn oi oi-cart btn-danger'><strong> {countCartItems}</strong></span></div>
