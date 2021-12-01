@@ -1,4 +1,5 @@
 **PREVIEW OF CHANGES PHASE 4**
+- Search movies starts when 3 or more letters are typed
 - Pagination prev, next buttons added
 - The pagination buttons if they are more than 5 they change to a different format to fit
 - Movies with no photo show a default image instead of that small ugly thingy 
