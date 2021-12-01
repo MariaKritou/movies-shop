@@ -1,4 +1,16 @@
-**PREVIEW OF CHANGES**
+**PREVIEW OF CHANGES PHASE 4**
+- Pagination prev, next buttons added
+- The pagination buttons if they are more than 5 they change to a different format to fit
+- Movies with no photo show a default image instead of that small ugly thingy 
+- Console warnings resolved
+- The cart button changes from add to delete when you add that movie to the cart list
+- Checkout button functionality with post (i think i sent the list with movies ids in post body but iam not sure, it works though)
+- Toast notifications for success/error depending on post result
+- If post returns true then cart list is emptied 
+- Checkout button is disabled if cart is empty
+- Footer added
+
+**PREVIEW OF CHANGES PHASE 3**
 - Searching movies from the search box
 - Pagination if search result gives > 20 movies
 - Sorting functionality from select box, on average vote or on popularity
