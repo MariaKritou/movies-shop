@@ -22,6 +22,16 @@ function App() {
 
   const apiKey = process.env.REACT_APP_API;
 
+
+  //---------- Code Review-------------
+  // Its time to use some Axios :)
+  // Rethink about the spread operator..
+
+  // Have a check to the responsiveness! When the width becomes smaller
+  // bring the cart div and the movies list div in column layout!
+  //---------- End Code Review-------------
+
+
   //Due to a console warning for empty dependency we have to add the eslint-disable line as a comment
   useEffect(() => {
     fetchData();

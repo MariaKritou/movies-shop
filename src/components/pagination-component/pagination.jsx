@@ -1,6 +1,11 @@
 import React from "react";
 import './pagination.styles.css';
 
+  //---------- Code Review-------------
+// API sometimes brings pages with empty arrays and the pagination has pages
+// with empty results.. have a check a think how you can improve it!
+  //---------- End Code Review-------------
+
 const Pagination = (props) => {
     const pageLinks = [];
 

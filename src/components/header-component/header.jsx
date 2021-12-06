@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import './header.styles.css';
 
+  //---------- Code Review-------------
+/*
+- Contact page does not exist. Try to keep in your code things that actually do something. 
+I would love to see you implement a contact page if you want, but if you dont please remove it. (UI/UX wise)
+
+- Also the countCartItem is not a button, you dont need to show to user that can click something that 
+doesnt do anything. Either change the pointer to cursor or remove btn attribute.
+*/
+  //----------End Code Review-------------
+
 const Header = ({countCartItems}) => (
     <div className='header row'>
         <div className='col-2 mt-4'>
