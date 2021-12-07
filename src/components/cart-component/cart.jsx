@@ -2,7 +2,7 @@ import React from "react";
 import './cart.styles.css';
 
 // movies in cart maybe should be a component
-export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies }) => (
+export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies, disable }) => (
   <div className="card text-white bg-dark" >
     <div className="card-header cart-title">Cart</div>
     <div className="card-body">
@@ -31,7 +31,7 @@ export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies })
       </div>
       <div className="row justify-content-md-center mt-3">
         <div className="col-md-5">
-          <button onClick={() => purchaseMovies()} type='button' className={`btn btn-warning btn-cart ${cartItems.length === 0 ? 'disabled' : ''}`} >Checkout</button>
+          <button onClick={() => purchaseMovies()} type='button' className={`btn btn-warning btn-cart ${cartItems.length === 0 ? 'disabled' : ''} ${disable}`} >Checkout</button>
         </div>
       </div>
     </div>

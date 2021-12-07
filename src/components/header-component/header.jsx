@@ -16,10 +16,9 @@ const Header = ({countCartItems}) => (
         <div className='col-7'>
             <div className='options'>
                 <Link className='option' to='/'> HOME </Link>
-                <Link className='option' to='/'> CONTACT </Link>
             </div>
         </div>
-        <div className='col-1 mt-4'><span className='btn oi oi-cart btn-warning'><strong> {countCartItems}</strong></span></div>
+        <div className='col-1 mt-4'><span className='oi oi-cart font-cart-icon'><strong> {countCartItems}</strong></span></div>
     </div>
 );
 

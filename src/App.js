@@ -5,6 +5,7 @@ import React, { useState, useEffect, Children } from 'react';
 import Layout from './components/layout-component/layout';
 import Pagination from './components/pagination-component/pagination';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 
@@ -20,7 +21,15 @@ function App() {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [btnDisable, setDisable] = useState('');
   const apiKey = process.env.REACT_APP_API;
+
+
+  //---------- Code Review-------------
+  // Have a check to the responsiveness! When the width becomes smaller
+  // bring the cart div and the movies list div in column layout!
+  //---------- End Code Review-------------
+  
 
   //Due to a console warning for empty dependency we have to add the eslint-disable line as a comment
   useEffect(() => {
@@ -33,35 +42,37 @@ function App() {
   //Get popular movies and sort them with vote_average
   function fetchData() {
     try {
-      fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
-        .then(res => res.json())
-        .then(moviesFetched => {
-          setMovies([...moviesFetched.results.sort(((a, b) => b[sortType] - a[sortType]))]);
-        });
+      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
+      .then(res => {
+        const moviesFetched = res.data;
+        setMovies(moviesFetched.results);
+      })
     } catch (error) {
       console.error(error);
     }
   }
 
   //Get movies from search result 
-  async function fetchSearchedMovies() {
-    if (searchField.length >= 2) {
-      try {
-        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchField}`);
-        const data = await res.json();
-        setMovies([...data.results]);
+  async function fetchSearchedMovies(searchkey) {
 
-        //set parameters for pagination
-        setTotalResults(data.total_results);
-        setTotalPages(data.total_pages);
-      } catch (error) {
-        console.error(error);
-      }
+    try {
+      const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchkey}`);
+      const data = await res.data;
+      setMovies(data.results);
+
+      //set parameters for pagination
+      setTotalResults(data.total_results);
+      setTotalPages(data.total_pages);
+    } catch (error) {
+      console.error(error);
     }
+
   }
 
   //Checkout button functionality
   async function purchaseMovies() {
+
+    setDisable('disabled');
 
     const idList = []
     cartItems.forEach(movie => {
@@ -82,12 +93,14 @@ function App() {
 
       const data = await res.json();
       if (data.success) {
-        toast.success("Purchare successful");
+        toast.success("Purchase successful");
         setCartItems([]);
         setTotalPrice(0);
       } else {
         toast.error("Purchase was not successful, try again");
       }
+
+      setDisable('');
 
     } catch (err) {
       console.log(err);
@@ -139,7 +152,7 @@ function App() {
     try {
       const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchField}&page=${pageNumber}`);
       const data = await res.json();
-      setMovies([...data.results]);
+      setMovies(data.results);
     } catch (err) {
       console.error(err);
     }
@@ -158,7 +171,10 @@ function App() {
   const handleSearchChange = e => {
     e.preventDefault();
     setSearchField(e.target.value);
-    fetchSearchedMovies();
+
+    if (e.target.value.length >2) {
+       fetchSearchedMovies(e.target.value);
+    }
   }
 
   //Handle the onChange event for the select option
@@ -199,6 +215,7 @@ function App() {
               onAdd={onAdd}
               onRemove={onRemove}
               purchaseMovies={purchaseMovies}
+              disable={btnDisable}
             />
           </div>
         </div>

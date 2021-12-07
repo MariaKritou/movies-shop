@@ -15,7 +15,7 @@
 .options {
     height: 100%;
     display: inline-flex;
-    margin-left: 70%;
+    margin-left: 85%;
     align-items: center;
     justify-content: flex-end;
   }
@@ -41,3 +41,7 @@ a {
     color:rgb(185, 185, 185);
   }
 
+.font-cart-icon{
+  font-size: xx-large;
+  color: rgb(209, 87, 87);
+}
