@@ -1,17 +1,8 @@
 import React from "react";
 import './cart.styles.css';
 
-  //---------- Code Review-------------
-/* 
-While the user has clicked the purchase button has the ability to press it again multiple times, as result to make multiple calls..
-you can either disable the purchase button when the user clicks purchase till the call responds or use a spinner
-*/
-  //----------End Code Review-------------
-
-
-
 // movies in cart maybe should be a component
-export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies }) => (
+export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies, disable }) => (
   <div className="card text-white bg-dark" >
     <div className="card-header cart-title">Cart</div>
     <div className="card-body">
@@ -40,7 +31,7 @@ export const Cart = ({ cartItems, totalPrice, onAdd, onRemove, purchaseMovies })
       </div>
       <div className="row justify-content-md-center mt-3">
         <div className="col-md-5">
-          <button onClick={() => purchaseMovies()} type='button' className={`btn btn-warning btn-cart ${cartItems.length === 0 ? 'disabled' : ''}`} >Checkout</button>
+          <button onClick={() => purchaseMovies()} type='button' className={`btn btn-warning btn-cart ${cartItems.length === 0 ? 'disabled' : ''} ${disable}`} >Checkout</button>
         </div>
       </div>
     </div>
