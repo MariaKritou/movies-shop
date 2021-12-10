@@ -4,15 +4,16 @@
     font-size: 72px;
     color: aqua;
   }
-   
-  .drill-down{
-    width: 10% !important;
+
+
+  @media only screen and (max-width: 768px) {
+
+  .align-items-class{
+    justify-content: center;
+    align-items: center;
+
+  }
   }
 
-  @media only screen and (min-width: 768px) {
 
-    .drill-down{
-      display: none !important;
-    }
   
-  }

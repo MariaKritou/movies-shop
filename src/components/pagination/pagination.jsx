@@ -22,7 +22,7 @@ const Pagination = (props) => {
     }
 
     return (
-        <div className="row">
+       
             <ul className="pagination">
                 {ctx.currentPage > 1 ?
                     <li className={`page-item bg-dark`} onClick={() => ctx.nextPage(ctx.currentPage)}>
@@ -34,7 +34,7 @@ const Pagination = (props) => {
                         <a href='/#' className='page-link bg-dark'>Next</a>
                     </li> : ''}
             </ul>
-        </div>
+       
     )
 }
 

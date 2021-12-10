@@ -14,8 +14,8 @@ function App() {
 
   function handleScroll() {
     window.scroll({
-      top: document.body.offsetHeight,
-      left: 0, 
+      top: 0,
+      left: 0,
       behavior: 'smooth',
     });
   }
@@ -27,21 +27,23 @@ function App() {
         <ToastContainer />
         <MovieProvider>
           <div className="App container-fluid">
-            <div className="row mb-2 drill-down" >
-              <button className="btn btn-secondary oi oi-chevron-bottom" onClick={handleScroll}></button>
-            </div>
             <div className="row">
               <Search placeholder='Search movies' />
             </div>
             <div className="row">
-              <div className="col-xl-9 col-md-6 col-lg-8 col-sm-12 col-12" align="center">
-                <MoviesList />
-                <div className="row">
-                  <Pagination />
-                </div>
-              </div>
-              <div className="col-xl-3 col-md-6 col-lg-4 col-sm-12 col-12" >
+              <div className="col-xl-3 col-md-6 col-lg-4 col-sm-4 col-12 order-sm-2 " >
                 <Cart />
+              </div>
+              <div className="col-xl-9 col-md-6 col-lg-8 col-sm-8 col-12 order-sm-1" align="center">
+                <MoviesList />
+              </div>
+            </div>
+            <div className="row ">
+              <div className='d-flex align-items-class'>
+                <Pagination />
+              </div>
+              <div className='d-flex align-items-center justify-content-center'>
+                <a  href='/#' onClick={handleScroll}>Scroll to Top</a>
               </div>
             </div>
           </div>
