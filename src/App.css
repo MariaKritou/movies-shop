@@ -4,3 +4,15 @@
     font-size: 72px;
     color: aqua;
   }
+   
+  .drill-down{
+    width: 10% !important;
+  }
+
+  @media only screen and (min-width: 768px) {
+
+    .drill-down{
+      display: none !important;
+    }
+  
+  }

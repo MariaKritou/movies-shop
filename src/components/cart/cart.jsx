@@ -12,16 +12,18 @@ export const Cart = () => {
       <div className="card-body">
 
         {ctx.cartItems.length !== 0 ?
-        
+
           <ul className="list-group list-group-flush">
             {ctx.cartItems.map((movie) => (
               <li key={movie.id} className="list-group-item ">
                 <div className="row">
-                  <div className="col-5">{movie.title}</div>
-                  <div className="col-4">{movie.quantity} x 10$</div>
+                  <div className="col-6">{movie.title}</div>
+                  <div className="col-3" align="right">
+                    <span>{movie.quantity} x 10$</span>
+                  </div>
                   <div className="col-3">
-                    <button onClick={() => ctx.onAdd(movie)} className="oi oi-plus"></button>
-                    <button onClick={() => ctx.onRemove(movie)} className="oi oi-minus"></button>
+                  <button onClick={() => ctx.onRemove(movie)} className="btn btn-secondary oi oi-minus"></button>
+                  <button onClick={() => ctx.onAdd(movie)} className="btn btn-secondary oi oi-plus"></button>
                   </div>
                 </div>
               </li>

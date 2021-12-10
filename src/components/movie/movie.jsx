@@ -7,6 +7,7 @@ export const Movie = ({ movie }) => {
     const ctx = useContext(CartContext);
 
     return (
+        <div className="col mb-4">
         <div className='card-container'>
             <img alt='movie' src={movie.poster_path === null ? window.location.origin + '/default.png' : `https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
             <h4 className='card-title text-left'> {movie.title}</h4>
@@ -25,5 +26,6 @@ export const Movie = ({ movie }) => {
                     }
                 </div>
             </span>
+        </div>
         </div>)
 };

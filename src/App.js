@@ -12,10 +12,13 @@ import './App.css'
 
 function App() {
 
-  //---------- Code Review-------------
-  // Have a check to the responsiveness! When the width becomes smaller
-  // bring the cart div and the movies list div in column layout!
-  //---------- End Code Review-------------
+  function handleScroll() {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0, 
+      behavior: 'smooth',
+    });
+  }
 
   return (
 
@@ -23,16 +26,21 @@ function App() {
       <Layout children={Children}>
         <ToastContainer />
         <MovieProvider>
-          <div className="App">
+          <div className="App container-fluid">
+            <div className="row mb-2 drill-down" >
+              <button className="btn btn-secondary oi oi-chevron-bottom" onClick={handleScroll}></button>
+            </div>
             <div className="row">
               <Search placeholder='Search movies' />
             </div>
             <div className="row">
-              <div className="col-9">
+              <div className="col-xl-9 col-md-6 col-lg-8 col-sm-12 col-12" align="center">
                 <MoviesList />
-                <Pagination />
+                <div className="row">
+                  <Pagination />
+                </div>
               </div>
-              <div className="col-3">
+              <div className="col-xl-3 col-md-6 col-lg-4 col-sm-12 col-12" >
                 <Cart />
               </div>
             </div>

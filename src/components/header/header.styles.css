@@ -44,4 +44,40 @@ a {
 .font-cart-icon{
   font-size: xx-large;
   color: rgb(209, 87, 87);
+  float: right;
+  margin-right: 20%;
+}
+
+
+@media only screen and (max-width: 1160px) {
+ 
+  .options {
+    margin-left: 50%;
+    align-items: center;
+  }
+
+  .font-cart-icon{
+    float: right;
+    margin-right: 15%;
+   }
+
+}
+
+
+@media only screen and (max-width: 580px) {
+ 
+  .mobile-title{
+    display: none;
+    
+  }
+
+  .mobile-link{
+    display: none;
+  }
+
+  .font-cart-icon{
+   float: right;
+   margin-right: 5%;
+  }
+
 }

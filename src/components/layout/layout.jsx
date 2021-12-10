@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     return (
         <div>
             <Header />
-            <div className="m-5">
+            <div className="m-4">
                 {children}
             </div>
             <Footer />
