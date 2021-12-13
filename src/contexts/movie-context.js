@@ -11,6 +11,9 @@ export const MovieProvider = props => {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
+  const [modal, setModal] = useState(false);
+  const [movieDetails, setMovieDetails] = useState();
+
   //Due to a console warning for empty dependency we have to add the eslint-disable line as a comment
   //Console also warns to NOT use the whole useEffect as async but make an async function inside
   useEffect(() => {
@@ -67,6 +70,11 @@ export const MovieProvider = props => {
     }
   }
 
+  const  handleModal= (clickedMovie) =>{
+    setModal(!modal);
+    setMovieDetails(clickedMovie);
+  }
+
   //----------HANDLE EVENTS END---------------------------
 
 
@@ -74,7 +82,7 @@ export const MovieProvider = props => {
     movies, setMovies, handleSearchChange,
     searchField, pages: totalPages,
     currentPage, handleSortingChange,
-    nextPage, sortType
+    nextPage, sortType, modal, setModal, movieDetails, handleModal
   };
 
   return (

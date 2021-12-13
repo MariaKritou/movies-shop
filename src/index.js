@@ -5,11 +5,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { MovieProvider } from './contexts/movie-context';
 
-ReactDOM.render(
+ReactDOM.render( 
   <BrowserRouter>
   <React.StrictMode>
+   <MovieProvider>
     <App />
+    </MovieProvider>
   </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

@@ -22,8 +22,8 @@ export const Cart = () => {
                     <span>{movie.quantity} x 10$</span>
                   </div>
                   <div className="col-3">
-                  <button onClick={() => ctx.onRemove(movie)} className="btn btn-secondary oi oi-minus"></button>
                   <button onClick={() => ctx.onAdd(movie)} className="btn btn-secondary oi oi-plus"></button>
+                  <button onClick={() => ctx.onRemove(movie)} className="btn btn-secondary oi oi-minus"></button>
                   </div>
                 </div>
               </li>

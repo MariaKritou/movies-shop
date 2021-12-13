@@ -1,16 +1,19 @@
-import React, { Children } from 'react';
+import React, { Children, useContext } from 'react';
 import Layout from './components/layout/layout';
 import Pagination from './components/pagination/pagination';
+import { MovieDetailsModal } from './modals/movie-details';
 import { MoviesList } from './components/movie-list/movie-list';
 import { Cart } from './components/cart/cart';
 import { Search } from './components/search-box/search-box';
 import { ToastContainer } from 'react-toastify';
-import { MovieProvider } from './contexts/movie-context';
+import { MovieContext, MovieProvider } from './contexts/movie-context';
 import { CartProvider } from './contexts/cart-context';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
 
 function App() {
+
+  const ctx = useContext(MovieContext);
 
   function handleScroll() {
     window.scroll({
@@ -20,19 +23,24 @@ function App() {
     });
   }
 
+  ctx.modal ? document.body.classList.add('active-modal') : document.body.classList.remove('active-modal');
+
   return (
 
     <CartProvider>
       <Layout children={Children}>
         <ToastContainer />
-        <MovieProvider>
+      
           <div className="App container-fluid">
+           
+          {ctx.modal &&( <MovieDetailsModal/>) }
             <div className="row">
               <Search placeholder='Search movies' />
             </div>
             <div className="row">
               <div className="col-xl-3 col-md-6 col-lg-4 col-sm-4 col-12 order-sm-2 " >
                 <Cart />
+              
               </div>
               <div className="col-xl-9 col-md-6 col-lg-8 col-sm-8 col-12 order-sm-1" align="center">
                 <MoviesList />
@@ -47,7 +55,7 @@ function App() {
               </div>
             </div>
           </div>
-        </MovieProvider>
+       
       </Layout>
     </CartProvider>
 
