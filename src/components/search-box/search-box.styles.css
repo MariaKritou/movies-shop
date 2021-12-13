@@ -11,11 +11,36 @@
       background-color: rgba(163, 163, 163, 0.452);
       margin-bottom: 20px;
       padding: 0.8rem;
-      max-width: 35% !important;
+      max-width: 40% !important;
       margin-left: 0.8% !important;
       border-radius: 3px;
   }
 
 .select-box{
       float:right;
+  }
+
+  @media only screen and (max-width: 900px) {
+    .search-row {
+      align-items: center;
+      max-width: 100% !important;
+    } 
+
+    .search {
+      float:left;
+      width: 100% !important;
+    }
+
+    .select-box{
+      max-width: 100% !important;
+    }
+ }
+
+
+  @media only screen and (max-width: 500px) {
+
+    .select-box{
+      max-width: 100% !important;
+    }
+  
   }

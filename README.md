@@ -1,3 +1,12 @@
+**PREVIEW OF REACT-CONTEXT BRANCH**
+- React context used: movie-context & cart-context
+- Use of Axios
+- Api fetch functions moved to its own file
+- App is responsive on all screens
+- Button to scroll to top added at the bottom of page
+- Modal with movie details opens when the image of a movie in the list is clicked 
+- Tonia's reviews completed
+
 **PREVIEW OF CHANGES PHASE 4**
 - Search movies starts when 3 or more letters are typed
 - Pagination prev, next buttons added
