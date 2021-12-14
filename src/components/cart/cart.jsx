@@ -5,11 +5,16 @@ import './cart.styles.css';
 // movies in cart maybe should be a component
 export const Cart = () => {
   const ctx = useContext(CartContext);
+  const auth = localStorage.getItem('authenticated');
+  let text = '';
+
+  auth === "true" ? text = "No items in your cart" : text = "Login to buy movies";
 
   return (
     <div className="card text-white bg-dark" >
       <div className="card-header cart-title">Cart</div>
       <div className="card-body">
+
 
         {ctx.cartItems.length !== 0 ?
 
@@ -22,15 +27,15 @@ export const Cart = () => {
                     <span>{movie.quantity} x 10$</span>
                   </div>
                   <div className="col-3">
-                  <button onClick={() => ctx.onAdd(movie)} className="btn btn-secondary oi oi-plus"></button>
-                  <button onClick={() => ctx.onRemove(movie)} className="btn btn-secondary oi oi-minus"></button>
+                    <button onClick={() => ctx.onAdd(movie)} className="btn btn-secondary oi oi-plus"></button>
+                    <button onClick={() => ctx.onRemove(movie)} className="btn btn-secondary oi oi-minus"></button>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
 
-          : <p>No movies in your cart</p>
+          : <p>{text}</p>
         }
         <div className="row mt-2">
           <div className="col-9"><strong>Total Price: </strong></div>

@@ -1,0 +1,19 @@
+  
+  h1 {
+    font-family: 'Bigelow Rules';
+    font-size: 72px;
+    color: aqua;
+  }
+
+  body.active-modal{
+    overflow-y: hidden;
+}
+
+  @media only screen and (max-width: 768px) {
+
+  .align-items-class{
+    justify-content: center;
+    align-items: center;
+  }
+
+  }
