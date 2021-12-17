@@ -1,19 +1,14 @@
-import React, { Children, useContext } from 'react';
+import React, { Children } from 'react';
 import Layout from '../../components/layout/layout';
 import Pagination from '../../components/pagination/pagination';
-import { MovieDetailsModal } from '../../modals/movie-details';
 import { MoviesList } from '../../components/movie-list/movie-list';
 import { Cart } from '../../components/cart/cart';
 import { Search } from '../../components/search-box/search-box';
 import { ToastContainer } from 'react-toastify';
-import { MovieContext } from '../../contexts/movie-context';
 import 'react-toastify/dist/ReactToastify.css';
 import './homepage.css';
 
-
 export const HomePage = () => {
-
-    const ctx = useContext(MovieContext);
 
     //go to the top of the page
     function handleScroll() {
@@ -24,14 +19,10 @@ export const HomePage = () => {
         });
     }
 
-    //prevent scrolling when modal is open
-    ctx.modal ? document.body.classList.add('active-modal') : document.body.classList.remove('active-modal');
-
     return (
         <Layout children={Children}>
             <ToastContainer />
             <div className="App container-fluid">
-                {ctx.modal && (<MovieDetailsModal />)}
                 <div className="row">
                     <Search placeholder='Search movies' />
                 </div>

@@ -2,3 +2,8 @@
 .login-form-style{
     width: 50% !important;
 }
+
+
+.error {
+    border: 2px solid rgb(219, 70, 70) !important;
+  }

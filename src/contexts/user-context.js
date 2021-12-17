@@ -4,13 +4,13 @@ export const UserContext = createContext();
 
 export const UserProvider = props => {
 
- function storeUser(name, pass){
+    function storeUser(name, pass) {
         localStorage.setItem('authenticated', true);
         localStorage.setItem('username', name);
         localStorage.setItem('password', pass);
     }
 
-    function removeUser(){
+    function removeUser() {
         localStorage.setItem('authenticated', false);
         localStorage.removeItem('username');
         localStorage.removeItem('password');

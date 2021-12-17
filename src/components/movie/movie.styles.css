@@ -45,3 +45,6 @@ button {
   float: right;
 }
 
+body.active-modal{
+  overflow-y: hidden;
+}

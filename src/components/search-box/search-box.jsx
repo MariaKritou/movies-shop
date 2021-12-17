@@ -14,7 +14,7 @@ export const Search = ({ placeholder }) => {
                         className='search form-control input-group'
                         type='search'
                         placeholder={placeholder}
-                        onChange={ctx.handleSearchChange}
+                        onChange={ctx.debounceOnChange}
                     />
 
                 </div>

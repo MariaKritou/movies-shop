@@ -15,7 +15,6 @@ export const Cart = () => {
       <div className="card-header cart-title">Cart</div>
       <div className="card-body">
 
-
         {ctx.cartItems.length !== 0 ?
 
           <ul className="list-group list-group-flush">

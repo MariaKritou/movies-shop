@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
-import functions from '../utils/fetch-data';
+import functions from '../utils/fetch-api-data';
+import debounce from 'lodash.debounce';
 
 export const MovieContext = createContext();
 
@@ -20,7 +21,7 @@ export const MovieProvider = props => {
 
     (async () => {
       const damnMovies = await functions.fetchPopularMovies();
-     setMovies(damnMovies);
+      setMovies(damnMovies);
     })()
 
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,20 +58,35 @@ export const MovieProvider = props => {
 
   const handleSearchChange = e => {
     e.preventDefault();
-    setSearchField(e.target.value);
-
-    //If user types 3 or more letters start the search 
+    
     let searchValue = e.target.value;
-    if (searchValue.length > 2) {
+    setSearchField(searchValue);
+
+    //If the user erases the search field then show popular movies
+    //If user types 3 or more letters start the search 
+    if (searchValue.length === 0) {
+      (async () => {
+        setTotalPages(0);
+        setCurrentPage(1);
+        const damnMovies = await functions.fetchPopularMovies();
+        setMovies(damnMovies);
+      })()
+    } else if (searchValue.length > 2) {
       (async () => {
         const damnMovies = await functions.fetchSearchedMovies(searchValue);
         setMovies(damnMovies[0]);
+        setCurrentPage(1);
         setTotalPages(damnMovies[1]);
       })()
-    }
+    } else return;
+
   }
 
-  const  handleModal= (clickedMovie) =>{
+  //Lodash library - debounce will wait X mseconds before calling the event
+  //While user types, onChange will not be called after each letter but after 3 ms
+  const debounceOnChange = debounce(handleSearchChange, 300);
+
+  const handleModal = (clickedMovie) => {
     setModal(!modal);
     setMovieDetails(clickedMovie);
   }
@@ -82,7 +98,8 @@ export const MovieProvider = props => {
     movies, setMovies, handleSearchChange,
     searchField, pages: totalPages,
     currentPage, handleSortingChange,
-    nextPage, sortType, modal, setModal, movieDetails, handleModal
+    nextPage, sortType, modal, setModal,
+    movieDetails, handleModal, debounceOnChange
   };
 
   return (
