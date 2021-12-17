@@ -15,7 +15,7 @@
 .options {
     height: 100%;
     display: inline-flex;
-    margin-left: 85%;
+    margin-left: 60%;
     align-items: center;
     justify-content: flex-end;
   }
@@ -44,4 +44,45 @@ a {
 .font-cart-icon{
   font-size: xx-large;
   color: rgb(209, 87, 87);
+  float: right;
+  margin-right: 20%;
+}
+
+
+@media only screen and (max-width: 1160px) {
+ 
+  .options {
+    margin-left: 0%;
+    align-items: center;
+  }
+
+  .font-cart-icon{
+    float: right;
+    margin-right: 15%;
+   }
+
+}
+
+
+@media only screen and (max-width: 580px) {
+ 
+  .mobile-title{
+    display: none;
+  }
+
+  .options {
+    margin-left: 0%;
+    align-items: center;
+  }
+
+  .option {
+    padding: 2px 5px;
+    margin-top: 10px;
+  }
+
+  .font-cart-icon{
+   float: right;
+   margin-right: 5%;
+  }
+
 }

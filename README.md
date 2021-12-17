@@ -1,3 +1,21 @@
+
+**PREVIEW OF AUTHORIZATION-AUTHENTICATION BRANCH**
+- Sign in page added with validation
+- Username on header (when clicked logout fires)
+- Private routing (only authenticated users can enter the page called: private, otherwise it redirects to signin page)
+- Pagination bug fixed
+- Search movies brings popular movies when searchfield is emptied
+- Use of lodash-debounce for onChangeSearch (wait a few milisecs while user types)
+
+**PREVIEW OF REACT-CONTEXT BRANCH**
+- React context used: movie-context & cart-context
+- Use of Axios
+- Api fetch functions moved to its own file
+- App is responsive on all screens
+- Button to scroll to top added at the bottom of page
+- Modal with movie details opens when the image of a movie in the list is clicked 
+- Tonia's reviews completed
+
 **PREVIEW OF CHANGES PHASE 4**
 - Search movies starts when 3 or more letters are typed
 - Pagination prev, next buttons added
