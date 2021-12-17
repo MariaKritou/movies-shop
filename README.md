@@ -5,7 +5,7 @@
 - Private routing (only authenticated users can enter the page called: private, otherwise it redirects to signin page)
 - Pagination bug fixed
 - Search movies brings popular movies when searchfield is emptied
-- Use of lodash-debounce for onChangeSearch (wait a few milisecs while users types)
+- Use of lodash-debounce for onChangeSearch (wait a few milisecs while user types)
 
 **PREVIEW OF REACT-CONTEXT BRANCH**
 - React context used: movie-context & cart-context
